@@ -5,16 +5,20 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 
+@AllArgsConstructor
 @Component
 public class TokenFilter extends OncePerRequestFilter {
+    private final JWTTools jwtTools;
+
     @Override
-    //request è la richiesta corrente
+    // request è la richiesta corrente
     // response serve a mandare una risposta di errore
     // filterChain serve per andare al prossimo step
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
@@ -36,6 +40,7 @@ public class TokenFilter extends OncePerRequestFilter {
         String accessToken = authHeader.replace("Bearer ", "");
         System.out.println(accessToken);
         //3. Verifichiamo che il token sia OK
+        this.jwtTools.verifyToken(accessToken);
 
 
         //3.1 Controlliamo se non sia mal formato

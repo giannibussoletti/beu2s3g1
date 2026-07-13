@@ -1,4 +1,4 @@
-package gianni_bussoletti.beu2s3g1.services;
+package gianni_bussoletti.beu2s3g1.security;
 
 import gianni_bussoletti.beu2s3g1.entities.User;
 import gianni_bussoletti.beu2s3g1.exceptions.UnauthorizedException;
