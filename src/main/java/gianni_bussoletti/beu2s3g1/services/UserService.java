@@ -81,5 +81,9 @@ public class UserService {
         this.userRepository.save(found);
     }
 
+    public User findByMail(String mail) {
+        return this.userRepository.findByMail(mail).orElseThrow(() -> new NotFoundException(mail));
+
+    }
 
 }

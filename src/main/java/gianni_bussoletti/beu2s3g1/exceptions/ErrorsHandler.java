@@ -35,6 +35,12 @@ public class ErrorsHandler {
         return new ErrorsWithListsDTO(ex.getMessage(), LocalDateTime.now(), ex.getErrorsList());
     }
 
+    @ExceptionHandler(UnauthorizedException.class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public ErrorsDTO unauthorizedError(UnauthorizedException ex) {
+        return new ErrorsDTO(ex.getMessage(), LocalDateTime.now());
+    }
+
     // Con questo metodo andiamo a gestire tutte le altre exception che non sono
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
