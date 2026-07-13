@@ -1,10 +1,7 @@
 package gianni_bussoletti.beu2s3g1.entities;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.util.UUID;
@@ -19,8 +16,8 @@ import java.util.UUID;
 public class User {
     @Id
     @GeneratedValue
+    @Setter(AccessLevel.NONE)
     private UUID id;
-
     @Column(nullable = false)
     private String name;
     @Column(nullable = false)

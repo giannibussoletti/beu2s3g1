@@ -42,3 +42,13 @@ riceve il token e controlla se il token è scaduta e/o se la signature sia corri
 Se c'è qualcosa che non va l'utente viene buttato fuori e riceve un 401 come errore e viene buttato fuori perché il token non corrisponde
 
 Per generare la e controllare la chiave segreta andranno inserite delle indicazioni nell'env.properties che rimarranno in locale e verrà gestita dal DB tramite application properties
+
+Le dipendenza necessarie sono 
+Spring Security che è un pacchetto che va installato tramite springi initializr
+poi ci serviranno delle dipendenze da maven library
+
+
+La Security Filter Chain è un componente fondamentale all'interno del framework Spring Security, progettato per garantire la sicurezza delle applicazioni web basate su Spring. Questa catena di filtri svolge un ruolo cruciale nel processo di e autorizzazione, assicurando che le richieste HTTP siano gestite in modo sicuro e che gli utenti abbiano accesso solo alle risorse consentite. La Security Filter Chain è una sequenza di filtri che vengono applicati alle richieste HTTP in modo sequenziale durante il loro attraversamento nell'applicazione. Ogni filtro svolge un ruolo specifico nella gestione della sicurezza e contribuisce al complesso processo di autenticazione e autorizzazione
+
+Alcuni di questi andranno disattivati perché nella gestione dei token non centrano
+
