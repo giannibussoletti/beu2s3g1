@@ -1,0 +1,44 @@
+JWT(JSON Web Token)
+è un sistema di sicurezza standard che utilizza i token.
+
+I token sono divisi in tre parti divisi da punti
+
+(Non centrano con le HTTP request)
+
+I dati di un token non sono cifrati, perché l'algoritmo è di codifica, cioè il token è reversibile e può essere letto senza problemi tramite Base64
+
+Header
+Informazioni di corredo per esempio, quale algoritmo ha generato questo token, e che tipo di token sia.
+
+Payload
+Qui si inseriscono delle informazioni chiamate "claims", che hanno una "data di emissione" ed una "data di scadenza"(non inserito come data in se), viene inserito anche a chi appartiene il token per esempio tramite ID, non vanno inserite informazioni delicate come per esempio password o altre infomrazioni sensibili dell'utente perché il token è in chiaro ed è decodificabile da un qualsiasi decoder in Base64
+
+
+Signature
+La firma è la parte che si occupa dell'integrità dei dati, viene generata a partire da quello che è Header e Payload, e serve per vedere se il payload del token è stato modificato, in maniera che non sia possibile inserire dati e permessi oltre a quelli dati dal token. È super importante come parte.
+
+Il tempo di durata di un toke, dipende dal tipo di applicazione, più una applicazione deve essere sicuro meglio è ridurre il tempo di validità di un token
+
+Flow della creazione di un token
+
+CLIENT
+Parte una POST con username e password
+
+SERVER
+Il serve deve avere un endpoint per riceve queste info
+L'endpoint dovrà verificare che le credenziali sono giuste
+Se le credenziali sono giuste andiamo a creare il token
+Questo endpoint creerà poi il Token con dentro le informazioni necessarie nel payload per esempio l'id e la data di scadenza
+Nella response inviamo il token
+
+CLIENT
+Il client riceve il token e lo salva nel localStorage
+
+Per tutte le richieste successive dovremmo inserire il token nell'Authorization Header
+
+SERVER
+riceve il token e controlla se il token è scaduta e/o se la signature sia corrispondente con il token. Se il tutto è ok possiamo avviare l'operazione richiesta dall'utente.
+
+Se c'è qualcosa che non va l'utente viene buttato fuori e riceve un 401 come errore e viene buttato fuori perché il token non corrisponde
+
+Per generare la e controllare la chiave segreta andranno inserite delle indicazioni nell'env.properties che rimarranno in locale e verrà gestita dal DB tramite application properties
