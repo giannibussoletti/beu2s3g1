@@ -1,7 +1,7 @@
 package gianni_bussoletti.beu2s3g1.exceptions;
 
-import gianni_bussoletti.be_u2_s2_g4.payloads.ErrorsDTO;
-import gianni_bussoletti.be_u2_s2_g4.payloads.ErrorsWithListsDTO;
+import gianni_bussoletti.beu2s3g1.payloads.ErrorsDTO;
+import gianni_bussoletti.beu2s3g1.payloads.ErrorsWithListsDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
