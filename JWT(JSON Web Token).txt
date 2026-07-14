@@ -52,3 +52,46 @@ La Security Filter Chain è un componente fondamentale all'interno del framework
 
 Alcuni di questi andranno disattivati perché nella gestione dei token non centrano
 
+
+
+
+
+Divisione commit autenticazione
+
+Prima parte fare una classe di Configurazione con Bean per la SecurityFilterChain, principalmente perché altrimenti gli endpoint rimangono chiusi
+
+Testare se gli endpoint sono aperti
+
+Commit
+
+Seconda parte da implementazione di login fino ad implementazione del token come risposta.
+
+Creazione endpoint che controlla le credenziali.
+
+Generazione del token tramite libreria jjwt
+data emissione
+data scadenza
+il proprietario
+firma con segreto(messo nell' env.properties) uso di @Value
+far ritornare il token
+
+Creare una Exception che gestisca gli errori in caso di token errato
+
+
+Testare se il token se è giusto
+testare se il login va bene
+
+commit
+
+
+Terza Parte: usare i filtri per controllare il token quando viene rimandato indietro come risposta
+
+Si tratta di controllare ed Estrapolare il token, e poi lo si verifica con il parser ti jjwt. Qui si usa un try catch per poter prendere delle eventuali eccezioni
+
+Questo però ci impedisce di fare il login perché con questa base di doFilterInternal viene usato anche per il login
+
+Dobbiamo quindi utilizzare shouldNotFilter che permette di impedire al FilterInternal di non intervenire su alcuni tipo di endpoint
+
+
+
+
